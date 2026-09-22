@@ -1,22 +1,13 @@
 <?php
 
-include 'conexao.php';
+require_once 'conexao.php';
 
-$id_hotel = $_POST['id_hotel'];
-$numero_quarto = $_POST['numero_quarto'];
-$tipo_quarto = $_POST['tipo_quarto'];
-$preco_diaria = $_POST['preco_diaria'];
-
-
-$sql = "INSERT INTO quartos (hotel_id, numero, tipo, preco_diaria)
-        VALUES ('$id_hotel', '$numero_quarto', '$tipo_quarto', '$preco_diaria')";
+$sql = "SELECT * FROM quartos";
 
 $resultado = mysqli_query($conexao, $sql);
 
 if (!$resultado) {
-
-    echo "Erro ao cadastrar: " . mysqli_error($conexao);
-
+    echo "Erro ao consultar quartos: " . mysqli_error($conexao);
     exit;
 }
 
@@ -32,7 +23,7 @@ if (!$resultado) {
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Hotel - Resultado</title>
+    <title>Hotel - Quartos</title>
 
     <style>
 
@@ -43,7 +34,7 @@ if (!$resultado) {
         }
 
         .form {
-            width: 400px;
+            width: 700px;
             margin: 30px auto;
             background-color: white;
             padding: 25px;
@@ -65,19 +56,30 @@ if (!$resultado) {
             color: blue;
         }
 
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        th {
+            background-color: darkblue;
+            color: white;
+        }
+
         .voltar {
             display: inline-block;
-            width: 330px;
+            width: 300px;
             margin-top: 20px;
             border-radius: 8px;
             padding: 12px;
             background-color: darkblue;
             color: white;
             text-decoration: none;
-        }
-
-        .voltar:hover {
-            background-color: #2563EB;
         }
 
     </style>
@@ -88,7 +90,7 @@ if (!$resultado) {
 
     <h1 class="titulo_principal">
 
-        🏨 Hotel - Cadastro
+        🏨 Hotel - Quartos
 
     </h1>
 
@@ -96,41 +98,43 @@ if (!$resultado) {
 
         <h2 class="titulo_secundario">
 
-            ✅ Quarto cadastrado!
+            🛏️ Quartos cadastrados
 
         </h2>
 
-        <p>
+        <table>
 
-            🏨 ID do Hotel:
-            <?php echo $id_hotel; ?>
+            <tr>
 
-        </p>
+                <th>ID Hotel</th>
+                <th>Número</th>
+                <th>Tipo</th>
+                <th>Preço da Diária</th>
 
-        <p>
+            </tr>
 
-            🚪 Número do Quarto:
-            <?php echo $numero_quarto; ?>
+            <?php
 
-        </p>
+            while ($quarto = mysqli_fetch_assoc($resultado)) {
 
-        <p>
+                echo "<tr>";
 
-            🛏️ Tipo de Quarto:
-            <?php echo $tipo_quarto;  ?>
+                echo "<td>" . $quarto['hotel_id'] . "</td>";
+                echo "<td>" . $quarto['numero'] . "</td>";
+                echo "<td>" . $quarto['tipo'] . "</td>";
+                echo "<td>R$ " . $quarto['preco_diaria'] . "</td>";
 
-        </p>
+                echo "</tr>";
 
-        <p>
+            }
 
-            💰 Preço da Diária:
-            R$ <?php echo $preco_diaria; ?>
+            ?>
 
-        </p>
+        </table>
 
         <a class="voltar" href="cadastrar_quarto.html">
 
-            VOLTAR
+            CADASTRAR NOVO QUARTO
 
         </a>
 
