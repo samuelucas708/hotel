@@ -10,7 +10,6 @@ $data_saida = $_POST['data_saida'];
 
 
 $sql_cliente = "SELECT id FROM clientes WHERE id = '$id_cliente'";
-
 $resultado_cliente = mysqli_query($conexao, $sql_cliente);
 
 if (!$resultado_cliente) {
@@ -41,32 +40,11 @@ if (mysqli_num_rows($resultado_quarto) == 0) {
 
 $quarto = mysqli_fetch_assoc($resultado_quarto);
 
-$preco_diaria = $quarto['preco_diaria'];
-
-
-
-$entrada = new DateTime($data_entrada);
-$saida = new DateTime($data_saida);
-
-$diferenca = $entrada->diff($saida);
-
-$dias = $diferenca->days;
-
-if ($dias <= 0) {
-    echo "A data de saída deve ser depois da data de entrada.";
-    exit;
-}
-
-
-
-$total = $dias * $preco_diaria;
-
-
 
 $sql = "INSERT INTO reservas 
-(cliente_id, quarto_id, data_entrada, data_saida, total)
+(cliente_id, quarto_id, data_entrada, data_saida)
 VALUES 
-('$id_cliente', '$id_quarto', '$data_entrada', '$data_saida', '$total')";
+('$id_cliente', '$id_quarto', '$data_entrada', '$data_saida')";
 
 $resultado = mysqli_query($conexao, $sql);
 
@@ -128,11 +106,9 @@ if ($resultado) {
         <p>ID do Quarto: <?php echo $id_quarto; ?></p>
         <p>Data de Entrada: <?php echo $data_entrada; ?></p>
         <p>Data de Saída: <?php echo $data_saida; ?></p>
-        <p>Quantidade de dias: <?php echo $dias; ?></p>
-        <p>Preço da diária: R$ <?php echo $preco_diaria; ?></p>
-        <p>Total: R$ <?php echo $total; ?></p>
 
-        <a class="botao" href="listar_reservas.php">
+
+        <a class="botao" href="minnhas.reservas.php">
             Ver Minhas Reservas
         </a>
 
