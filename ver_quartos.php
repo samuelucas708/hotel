@@ -4,7 +4,7 @@ $id_hotel = $_GET['id_hotel'];
 $sql = "SELECT * FROM quartos WHERE hotel_id = '$id_hotel'";
 $resultado = mysqli_query($conexao, $sql);
 if (!$resultado) {
-    echo "Erro ao consultar quartos: " . mysqli_error($conexao);
+    echo "Erro: " . mysqli_error($conexao);
     exit;
 }
 
@@ -90,7 +90,7 @@ if (!$resultado) {
 
     <div class="form">
 
-        <h2 class="titulo_secundario">🛏️ Quartos do Hotel</h2>
+        <h2 class="titulo_secundario">🛏️ Quartos do Hotel Disponíveis</h2>
 
         <table>
 
@@ -120,10 +120,10 @@ if (!$resultado) {
         <form action="salvar_reserva.php" method="POST">
 
             <p>id do Cliente: <input type="number" name="id_cliente" required></p>
-            <p>ID do Quarto:<input type="number" name="id_quarto" required></p>
+            <p>iD do Quarto:<input type="number" name="id_quarto" required></p>
             <p> Data de Entrada:<input type="date" name="data_entrada" required></p>
             <p>Data de Saída:<input type="date" name="data_saida" required></p>
-            <input class="botao" type="submit" value="Confirmar Reserva">
+            <input class="botao" type="submit" value="Confirmar reservas">
 
         </form>
 
