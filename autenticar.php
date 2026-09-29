@@ -14,7 +14,7 @@ $resultado = mysqli_query(
 $row = mysqli_num_rows($resultado);
 
 if(mysqli_num_rows($resultado) > 0){
-    header("Location: minhas_reservas.php?id_clente". $row['id']);
+    header("Location: minhas_reservas.php?id_cliente". $row['id']);
     exit();
 
     

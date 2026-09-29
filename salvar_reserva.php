@@ -108,7 +108,7 @@ if ($resultado) {
         <p>Data de Saída: <?php echo $data_saida; ?></p>
 
 
-        <a class="botao" href="minnhas.reservas.php">
+        <a class="botao" href="minhas_reservas.php">
             Ver Minhas Reservas
         </a>
 

@@ -2,10 +2,14 @@
 
 require_once 'conexao.php';
 
-$sql = "SELECT reservas.*, clientes.nome, quartos.numero
+$id_hotel = $_GET['id_hotel'];
+
+$sql = "SELECT reservas.id, clientes.nome AS nome_cliente, clientes.telefone,
+        quartos.numero, reservas.data_entrada, reservas.data_saida
         FROM reservas
-        INNER JOIN clientes ON reservas.cliente_id = clientes.id
-        INNER JOIN quartos ON reservas.quarto_id = quartos.id";
+        JOIN quartos ON reservas.quarto_id = quartos.id
+        JOIN clientes ON reservas.cliente_id = clientes.id
+        WHERE quartos.hotel_id = '$id_hotel'";
 
 $resultado = mysqli_query($conexao, $sql);
 
@@ -17,14 +21,16 @@ if (!$resultado) {
 ?>
 
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
 
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Minhas Reservas</title>
+    <title>Reservas do Hotel</title>
 
     <style>
 
@@ -35,7 +41,7 @@ if (!$resultado) {
         }
 
         .form {
-            width: 800px;
+            width: 700px;
             margin: 30px auto;
             background-color: white;
             padding: 25px;
@@ -92,51 +98,62 @@ if (!$resultado) {
 
 <body>
 
-    <h1 class="titulo_principal">🏨 Minhas Reservas</h1>
+    <h1 class="titulo_principal">🏨 Reservas do Hotel</h1>
 
     <div class="form">
 
-        <h2 class="titulo_secundario">📅 Reservas realizadas</h2>
+        <h2 class="titulo_secundario">📅 Reservas Recebidas</h2>
 
         <table>
 
             <tr>
+
+                <th>ID</th>
+
                 <th>Cliente</th>
+
+                <th>Telefone</th>
+
                 <th>Quarto</th>
-                <th>Data de Entrada</th>
-                <th>Data de Saída</th>
-                <th>Total</th>
+
+                <th>Entrada</th>
+
+                <th>Saída</th>
+
             </tr>
 
             <?php
 
             while ($reserva = mysqli_fetch_assoc($resultado)) {
 
-                $data_entrada = date("d/m/Y", strtotime($reserva['data_entrada']));
-
-                $data_saida = date("d/m/Y", strtotime($reserva['data_saida']));
-
                 echo "<tr>";
 
-                echo "<td>" . $reserva['nome'] . "</td>";
+                echo "<td>" . $reserva['id'] . "</td>";
+
+                echo "<td>" . $reserva['nome_cliente'] . "</td>";
+
+                echo "<td>" . $reserva['telefone'] . "</td>";
 
                 echo "<td>" . $reserva['numero'] . "</td>";
 
-                echo "<td>" . $data_entrada . "</td>";
+                echo "<td>" . date("d/m/Y", strtotime($reserva['data_entrada'])) . "</td>";
 
-                echo "<td>" . $data_saida . "</td>";
-
-                echo "<td>R$ " . $reserva['total'] . "</td>";
+                echo "<td>" . date("d/m/Y", strtotime($reserva['data_saida'])) . "</td>";
 
                 echo "</tr>";
+
             }
 
             ?>
 
         </table>
 
-        <a class="botao" href="listar_hoteis.php">
-            Voltar para Hotéis
+        <a class="botao" href="cadastrar_quarto.html">
+            Cadastrar Novo Quarto
+        </a>
+
+        <a class="botao" href="logout_hotel.php">
+            Sair
         </a>
 
     </div>
