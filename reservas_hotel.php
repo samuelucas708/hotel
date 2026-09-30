@@ -2,7 +2,16 @@
 
 require_once 'conexao.php';
 
-$id_hotel = $_GET['id_hotel'];
+if (isset($_GET['id_hotel'])) {
+
+    $id_hotel = $_GET['id_hotel'];
+
+} else {
+
+    echo "ID do hotel não informado!";
+    exit;
+
+}
 
 $sql = "SELECT reservas.id, clientes.nome AS nome_cliente, clientes.telefone,
         quartos.numero, reservas.data_entrada, reservas.data_saida
@@ -98,11 +107,15 @@ if (!$resultado) {
 
 <body>
 
-    <h1 class="titulo_principal">🏨 Reservas do Hotel</h1>
+    <h1 class="titulo_principal">
+        🏨 Reservas do Hotel
+    </h1>
 
     <div class="form">
 
-        <h2 class="titulo_secundario">📅 Reservas Recebidas</h2>
+        <h2 class="titulo_secundario">
+            📅 Reservas Recebidas
+        </h2>
 
         <table>
 
@@ -129,16 +142,11 @@ if (!$resultado) {
                 echo "<tr>";
 
                 echo "<td>" . $reserva['id'] . "</td>";
-
                 echo "<td>" . $reserva['nome_cliente'] . "</td>";
-
                 echo "<td>" . $reserva['telefone'] . "</td>";
-
                 echo "<td>" . $reserva['numero'] . "</td>";
-
-                echo "<td>" . date("d/m/Y", strtotime($reserva['data_entrada'])) . "</td>";
-
-                echo "<td>" . date("d/m/Y", strtotime($reserva['data_saida'])) . "</td>";
+                echo "<td>" . date("d/m/Y", ($reserva['data_entrada'])) . "</td>";
+                echo "<td>" . date("d/m/Y", ($reserva['data_saida'])) . "</td>";
 
                 echo "</tr>";
 

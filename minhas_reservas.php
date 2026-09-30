@@ -112,9 +112,9 @@ if (!$resultado) {
 
             while ($reserva = mysqli_fetch_assoc($resultado)) {
 
-                $data_entrada = date("d/m/Y", strtotime($reserva['data_entrada']));
+                $data_entrada = date("d/m/Y", $reserva['data_entrada']));
 
-                $data_saida = date("d/m/Y", strtotime($reserva['data_saida']));
+                $data_saida = date("d/m/Y", $reserva['data_saida']));
 
                 echo "<tr>";
 
