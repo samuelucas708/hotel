@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Guia de Hotéis</title>
+
+  
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <style>
+        body {
+            background-color: #f1f5f9;
+        }
+
+        
+        .navbar {
+            background-color: #2563eb !important;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 22px;
+        }
+
+       
+        .hotel-card {
+            height: 100%;
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: 0.3s;
+        }
+
+        .hotel-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .hotel-card h2 {
+            color: #2563eb;
+            margin-bottom: 15px;
+        }
+
+        .hotel-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+        }
+
+        
+        .titulo {
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        
+        .table {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        
+        .access-card {
+            border: none;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .access-card:hover {
+            transform: translateY(-5px);
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            text-align: center;
+            color: #64748b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container py-4">
+
+        
+        <nav class="navbar navbar-expand-lg navbar-dark px-4">
+            <div class="container-fluid">
+
+                <a class="navbar-brand" href="#">
+                    🛏️ Guia de Hotéis
+                </a>
+
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">
+                            Página Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">
+                            Cadastro Cliente
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">
+                            Cadastro Hotel
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+
+    
+        <div class="text-center mb-4">
+            <h1 class="titulo">Nossos Hotéis</h1>
+            <p class="text-muted">
+                Encontre o hotel ideal para sua hospedagem
+            </p>
+        </div>
+
+
+        
+        <div class="row g-4">
+
+            
+            <div class="col-md-6">
+                <div class="hotel-card">
+
+                    <h2>Hotel Primavera</h2>
+
+                    <img
+                        src="download.jpg"
+                        alt="Hotel Primavera"
+                        class="hotel-img"
+                    >
+
+                    <p class="text-muted mt-3">
+                        Um ambiente confortável e agradável para sua estadia.
+                    </p>
+
+                    <button class="btn btn-primary">
+                        Ver Hotel
+                    </button>
+
+                </div>
+            </div>
+
+
+            
+            <div class="col-md-6">
+                <div class="hotel-card">
+
+                    <h2>Hotel Todo Vapor</h2>
+
+                    <img
+                        src="pele.jpg"
+                        alt="Hotel Todo Vapor"
+                        class="hotel-img"
+                    >
+
+                    <p class="text-muted mt-3">
+                        Conforto e praticidade para você aproveitar sua viagem.
+                    </p>
+
+                    <button class="btn btn-primary">
+                        Ver Hotel
+                    </button>
+
+                </div>
+            </div>
+
+
+           
+            <div class="col-md-6">
+                <div class="hotel-card">     <h2>Poço Fundo</h2><img src="images.jpg"  alt="Hotel Poço Fundo" class="hotel-img">
+                    <p class="text-muted mt-3">  Um lugar tranquilo para descansar e relaxar.</p>
+                    <button class="btn btn-primary">
+                        Ver Hotel
+                    </button>
+
+                </div>
+            </div>
+
+
+            
+            <div class="col-md-6">
+                <div class="hotel-card">
+                    <h2>Hotel BH City</h2>
+                    <img src="oi.jpg" alt="Hotel BH City"  class="hotel-img"> <p class="text-muted mt-3">
+                        Uma excelente opção para quem visita Belo Horizonte.
+                    </p>
+                    <button class="btn btn-primary">
+                        Ver Hotel
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        
+        
+
+
+        <section class="mt-5">
+
+            <h2 class="text-center titulo mb-2">
+                Escolha uma opção
+            </h2>
+
+            <p class="text-center text-muted mb-4">
+                Acesse sua área para continuar
+            </p>
+
+            <div class="row g-4"><div class="col-md-6">
+
+                    <div class="card access-card shadow-sm h-100">
+
+                        <div class="card-body text-center p-4">
+
+                            <h3 class="card-title text-success">
+                                👤 Área do Cliente
+                            </h3>
+
+                            <p class="card-text text-muted">
+                                Faça seu login para visualizar seus dados,
+                                reservas e informações.
+                            </p>
+
+                           
+                                <button > <a href="login.html"> Acessar Conta </button> 
+                                </a>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+              
+                <div class="col-md-6">
+
+                    <div class="card access-card shadow-sm h-100">
+
+                        <div class="card-body text-center p-4">
+
+                            <h3 class="card-title text-primary">
+                                🏨 Área do Hotel
+                            </h3>
+
+                            <p class="card-text text-muted">
+                                Acesse o sistema para gerenciar quartos
+                                e reservas.
+                            </p>
+
+                            <button class="class="btn btn-success" > <a href="login_hotel.html"> Acessar Conta </button> 
+                                </a>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        
+        <footer> 
+            <p class="mb-0">
+               
+                © 2026 Guia de Hotéis - Todos os direitos reservados  
+<button>
+                <div>
+                <img src="ins.jpg" alt="instagram" width="20px" > <a href="https://www.instagram.com/"></a> 
+            </p>
+            </button>
+            </div>
+
+            <div>
+               
+            </p>
+            </button>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>
