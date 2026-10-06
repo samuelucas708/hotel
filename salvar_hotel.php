@@ -83,7 +83,7 @@ if (!$resultado) {
 
 <body>
 
-```
+
 <h1 class="titulo_principal">
 
     🏨 Hotel - Cadastro
